@@ -1,0 +1,47 @@
+{
+  "name": "CriticalMassSternfahrtThemeHugo",
+  "version": "0.0.1",
+  "authors": [
+    "Critical Mass Netzwerk in der Metropolregion Stuttgart"
+  ],
+  "description": "A template for hugo sites",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~4.0.0-alpha.2",
+    "font-awesome": "~4.6.1",
+    "mapbox.js": "~2.4.0",
+    "d3": "~3.5.16"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "css": "dist/css/bootstrap.min.css",
+      "js": "dist/js/bootstrap.min.js"
+    },
+    "jquery": {
+      "js": "dist/jquery.min.js"
+    },
+    "font-awesome": {
+      "css": "css/font-awesome.min.css",
+      "fonts": "fonts/*"
+    },
+    "mapbox.js": {
+      "css": "mapbox.css",
+      "js": "mapbox.js",
+      "css/images": [
+        "images/*.png",
+        "images/*.svg"
+      ]
+    },
+    "d3": {
+      "js": "d3.min.js"
+    }
+  }
+}

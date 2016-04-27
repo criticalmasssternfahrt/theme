@@ -1,0 +1,32 @@
+{
+  "name": "CriticalMassSternfahrtThemeHugo",
+  "version": "0.0.1",
+  "description": "A template for hugo sites",
+  "main": "_site/index.html",
+  "author": "",
+  "license": "MIT",
+  "homepage": "http://github.com/criticalmasssternfahrt/theme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/criticalmasssternfahrt/theme"
+  },
+  "keywords": [
+    "hugo",
+    "template"
+  ],
+  "bugs": {
+    "url": "https://github.com/criticalmasssternfahrt/theme/issues"
+  },
+  "engines": {
+    "node": ">= 4.3.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.0",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-uglify": "^1.0.1"
+  }
+}

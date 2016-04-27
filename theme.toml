@@ -1,0 +1,9 @@
+name = "Critical Mass Sternfahrt Theme"
+license = "MIT"
+licenselink = "http://choosealicense.com/licenses/mit/"
+homepage = "http://critical-mass-sternfahrt.de/"
+min_version = 0.15
+
+[author]
+  name = "Critical Mass Stuttgart"
+  homepage = "https://criticalmassstuttgart.wordpress.com/"
