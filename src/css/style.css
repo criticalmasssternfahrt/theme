@@ -9,6 +9,7 @@ div.jumbotron {
 .cmmap {
     width: 100%;
     height: 500px;
+    margin-bottom: 2em;
 }
 
 a:link,a:visited {
