@@ -1,3 +1,3 @@
 #!/bin/bash
 
-tar czf v0.0.1.tar.gz layouts/ static/ theme.toml
+tar --xform s:'./':'./themes/critical-mass-sternfahrt-theme/': -czf v0.0.1-release.tar.gz ./layouts/ ./static/ ./theme.toml
