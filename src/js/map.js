@@ -1,24 +1,5 @@
-function makeMap(mapsource, element) {
-  L.mapbox.accessToken = 'pk.eyJ1IjoibWl0cmFkc3R1dHRnYXJ0IiwiYSI6ImNaSko4cHcifQ.46Jz7d_F7BoNcrIiBLYUaQ';
-
-  $.getJSON(mapsource, function(data) {
-
-    adjustMapHeight();
-    $( window ).resize(function() {
-      adjustMapHeight();
-    });
-
-    function adjustMapHeight() {
-      var winHeight = $( window ).height();
-      var height = 850;
-
-      if (winHeight < height) {
-        height = 0.7 * winHeight;
-      }
-
-      $("#" + element).css("height", height + "px");
-    }
-
+function drawelement(element, map){
+  return function (data) {
     var geojson = L.geoJson(data, {
       style: L.mapbox.simplestyle.style,
 
@@ -64,16 +45,45 @@ function makeMap(mapsource, element) {
         layer.bindPopup(popupContent);
       }
     });
-
-    var map = L.mapbox.map(element, 'mapbox.streets', {
-      minZoom: 10,
-      maxZoom: 18,
-      maxBounds: [[47.5,7.5],[50,10.5]]
-    }).fitBounds(geojson.getBounds());
-
     geojson.addTo(map);
+    //map.fitBounds(geojson.getBounds());
+  }
+}
 
-    // Add a legend
-    map.legendControl.addLegend("<strong>Critical Mass Sternfahrt</strong><br>12. Juni 2016");
+function makeMap(mapsources, element) {
+  L.mapbox.accessToken = 'pk.eyJ1IjoibWl0cmFkc3R1dHRnYXJ0IiwiYSI6ImNaSko4cHcifQ.46Jz7d_F7BoNcrIiBLYUaQ';
+
+  adjustMapHeight();
+  $( window ).resize(function() {
+    adjustMapHeight();
   });
+
+  function adjustMapHeight() {
+    var winHeight = $( window ).height();
+    var height = 850;
+
+    if (winHeight < height) {
+      height = 0.7 * winHeight;
+    }
+
+    $("#" + element).css("height", height + "px");
+  }
+
+  var map = L.mapbox.map(element, 'mapbox.streets', {
+    minZoom: 9,
+    maxZoom: 18,
+    center: [9.18,48.78],
+    maxBounds: [[48,8.5],[49.5,9.75]]
+  });
+
+  // geojson.addTo(map);
+
+  mapsources.forEach(function(mapsource) {
+    $.getJSON(mapsource, drawelement(element, map));
+  });
+
+  // Add a legend
+  map.legendControl.addLegend("<strong>Critical Mass Sternfahrt</strong><br>12. Juni 2016");
+
+  map.fitBounds([[48.4,8.7],[49,9.6]]);
 }

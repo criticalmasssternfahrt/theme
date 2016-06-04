@@ -1,6 +1,6 @@
 {
   "name": "CriticalMassSternfahrtThemeHugo",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A template for hugo sites",
   "main": "_site/index.html",
   "author": "",

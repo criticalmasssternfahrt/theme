@@ -5,7 +5,18 @@
 
   <script>
     $(document).ready(function(){
-      makeMap("{{ .Site.BaseURL }}maps/main.geojson", "overviewmap");
+      makeMap(
+        [
+          "{{ .Site.BaseURL }}maps/herrenberg.geojson",
+          "{{ .Site.BaseURL }}maps/reutlingen.geojson",
+          "{{ .Site.BaseURL }}maps/esslingen.geojson",
+          "{{ .Site.BaseURL }}maps/schorndorf.geojson",
+          "{{ .Site.BaseURL }}maps/ludwigsburg.geojson",
+          "{{ .Site.BaseURL }}maps/weil-der-stadt.geojson",
+          "{{ .Site.BaseURL }}maps/stuttgart.geojson"
+        ],
+        "overviewmap"
+      );
     });
   </script>
   <div class="clearfix"></div>
