@@ -24,7 +24,7 @@
   <main class="posts">
     {{ range first 5 (where .Data.Pages "Section" "post") }}
     <article class="post">
-      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      <h4>{{ .Title }}</h4>
       <p>
         {{ .Summary }}
         <span class="small" style="margin-left:1em;"><a href="{{ .Permalink }}">Weiterlesen »</a></span>

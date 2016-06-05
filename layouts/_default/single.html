@@ -2,6 +2,9 @@
 {{ partial "header.html" . }}
 <!-- <main class="posts"> -->
 <div class="container">
+  <p>
+    <a href="{{ .Site.BaseURL }}">Home</a> » {{ .Title }}
+  </p>
   <main>
     <article class="post">
       <h1>{{ .Title }}</h1>
