@@ -34,24 +34,19 @@
   </main>
 </div>
 
-
+{{ $maps := split (partial "maps.html" . | chomp) "\n" }}
+{{ $len := len $maps }}
 <script>
   $(document).ready(function(){
     makeMap(
-      [
-        "{{ .Site.BaseURL }}maps/herrenberg.geojson",
-        "{{ .Site.BaseURL }}maps/reutlingen.geojson",
-        "{{ .Site.BaseURL }}maps/esslingen.geojson",
-        "{{ .Site.BaseURL }}maps/schorndorf.geojson",
-        "{{ .Site.BaseURL }}maps/ludwigsburg.geojson",
-        "{{ .Site.BaseURL }}maps/weil-der-stadt.geojson",
-        "{{ .Site.BaseURL }}maps/stuttgart.geojson",
-        "{{ .Site.BaseURL }}maps/abschlussrunde.geojson"
+      [{{ range $index, $element := $maps }}
+        {{ printf "\"%vmaps/%v\"" $.Site.BaseURL $element | safeJS }}{{ if not (eq $index $len) }}{{ printf "%v" "," | safeJS }}{{ end }}{{ end }}
       ],
       "overviewmap"
     );
   });
  </script>
+
 
 {{ partial "footer.html" . }}
 {{ partial "foot.html" . }}
