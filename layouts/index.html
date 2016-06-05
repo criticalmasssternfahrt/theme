@@ -1,35 +1,56 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
 <div class="container">
+  <h1>Die Strecken am 12. Juni 2016</h1>
   <div id="overviewmap" class="cmmap"></div>
-
-  <script>
-    $(document).ready(function(){
-      makeMap(
-        [
-          "{{ .Site.BaseURL }}maps/herrenberg.geojson",
-          "{{ .Site.BaseURL }}maps/reutlingen.geojson",
-          "{{ .Site.BaseURL }}maps/esslingen.geojson",
-          "{{ .Site.BaseURL }}maps/schorndorf.geojson",
-          "{{ .Site.BaseURL }}maps/ludwigsburg.geojson",
-          "{{ .Site.BaseURL }}maps/weil-der-stadt.geojson",
-          "{{ .Site.BaseURL }}maps/stuttgart.geojson"
-        ],
-        "overviewmap"
-      );
-    });
-  </script>
   <div class="clearfix"></div>
 
   <main class="posts">
-    <article class="post">
-      {{ range .Data.Pages }}
-      <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-      <p>{{ .Summary }}</p>
-      <!--<p class="small"><a href="{{ .Permalink }}">Weiterlesen »</a></p>-->
-      {{ end }}
+    <h1>Details zu den Routen</h1>
+    {{ range where .Data.Pages.ByTitle "Section" "route" }}
+    <article class="post col-sm-4">
+      <h4>{{ .Title }}</h4>
+      <p>
+        {{ .Params.intro }}
+      </p>
+      <p class="small"><a href="{{ .Permalink }}">Zwischenhalte und weitere Details »</a></p>
     </article>
+    {{ end }}
+  </main>
+
+  <div class="clearfix"></div>
+
+  <h1 style="margin-top:1em;">Blog</h1>
+  <main class="posts">
+    {{ range first 5 (where .Data.Pages "Section" "post") }}
+    <article class="post">
+      <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+      <p>
+        {{ .Summary }}
+        <span class="small" style="margin-left:1em;"><a href="{{ .Permalink }}">Weiterlesen »</a></span>
+      </p>
+    </article>
+    {{ end }}
   </main>
 </div>
+
+
+<script>
+  $(document).ready(function(){
+    makeMap(
+      [
+        "{{ .Site.BaseURL }}maps/herrenberg.geojson",
+        "{{ .Site.BaseURL }}maps/reutlingen.geojson",
+        "{{ .Site.BaseURL }}maps/esslingen.geojson",
+        "{{ .Site.BaseURL }}maps/schorndorf.geojson",
+        "{{ .Site.BaseURL }}maps/ludwigsburg.geojson",
+        "{{ .Site.BaseURL }}maps/weil-der-stadt.geojson",
+        "{{ .Site.BaseURL }}maps/stuttgart.geojson"
+      ],
+      "overviewmap"
+    );
+  });
+ </script>
+
 {{ partial "footer.html" . }}
 {{ partial "foot.html" . }}

@@ -2,4 +2,4 @@
 
 npm install
 grunt
-tar --xform s:'./':'./themes/critical-mass-sternfahrt-theme/': -czf v0.0.3-release.tar.gz ./layouts/ ./static/ ./theme.toml
+tar --xform s:'./':'./themes/critical-mass-sternfahrt-theme/': -czf v0.0.4-release.tar.gz ./layouts/ ./static/ ./theme.toml

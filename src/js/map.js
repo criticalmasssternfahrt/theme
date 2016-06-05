@@ -1,4 +1,4 @@
-function drawelement(element, map){
+function drawelement(element, map, fitBounds){
   return function (data) {
     var geojson = L.geoJson(data, {
       style: L.mapbox.simplestyle.style,
@@ -46,11 +46,13 @@ function drawelement(element, map){
       }
     });
     geojson.addTo(map);
-    //map.fitBounds(geojson.getBounds());
+    if (fitBounds) {
+      map.fitBounds(geojson.getBounds());
+    }
   }
 }
 
-function makeMap(mapsources, element) {
+function makeMap(mapsources, element, fitBounds) {
   L.mapbox.accessToken = 'pk.eyJ1IjoibWl0cmFkc3R1dHRnYXJ0IiwiYSI6ImNaSko4cHcifQ.46Jz7d_F7BoNcrIiBLYUaQ';
 
   adjustMapHeight();
@@ -76,14 +78,17 @@ function makeMap(mapsources, element) {
     maxBounds: [[48,8.5],[49.5,9.75]]
   });
 
-  // geojson.addTo(map);
+  if (mapsources.length > 2) {
+    fitBounds = false;
+    map.fitBounds([[48.4,8.7],[49,9.6]]);
+  } else {
+    fitBounds = true;
+  }
 
   mapsources.forEach(function(mapsource) {
-    $.getJSON(mapsource, drawelement(element, map));
+    $.getJSON(mapsource, drawelement(element, map, fitBounds));
   });
 
   // Add a legend
   map.legendControl.addLegend("<strong>Critical Mass Sternfahrt</strong><br>12. Juni 2016");
-
-  map.fitBounds([[48.4,8.7],[49,9.6]]);
 }
