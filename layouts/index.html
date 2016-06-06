@@ -5,34 +5,18 @@
   <div id="overviewmap" class="cmmap"></div>
   <div class="clearfix"></div>
 
-  <main class="posts">
-    <h1>Details zu den Routen</h1>
-    {{ range where .Data.Pages.ByTitle "Section" "route" }}
-    <article class="post col-sm-4">
-      <h4>{{ .Title }}</h4>
-      <p>
-        {{ .Params.intro }}
-      </p>
-      <p class="small"><a href="{{ .Permalink }}">Zwischenhalte und weitere Details »</a></p>
-    </article>
-    {{ end }}
-  </main>
+  {{ partial "index-routes.html" . }}
 
   <div class="clearfix"></div>
 
-  <h1 style="margin-top:1em;">Blog</h1>
-  <main class="posts">
-    {{ range first 5 (where .Data.Pages "Section" "post") }}
-    <article class="post">
-      <h4>{{ .Title }}</h4>
-      <p>
-        {{ .Summary }}
-        <span class="small" style="margin-left:1em;"><a href="{{ .Permalink }}">Weiterlesen »</a></span>
-      </p>
-    </article>
-    {{ end }}
-  </main>
+  {{ partial "index-blog.html" . }}
+
+  <div class="clearfix"></div>
+
+  {{ partial "index-sonstiges.html" . }}
 </div>
+
+
 
 {{ $maps := split (partial "maps.html" . | chomp) "\n" }}
 {{ $len := len $maps }}
