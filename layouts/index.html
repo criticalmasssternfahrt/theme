@@ -1,21 +1,20 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
 <div class="container">
-  <h1>Die Strecken am 12. Juni 2016</h1>
+  <h1 class="display-4">Die Strecken am 12. Juni 2016</h1>
   <div id="overviewmap" class="cmmap"></div>
   <div class="clearfix"></div>
 
   {{ partial "index-routes.html" . }}
 
-  <div class="clearfix"></div>
+  <div class="clearfix" style="margin:1em;">&nbsp;</div>
 
   {{ partial "index-blog.html" . }}
 
-  <div class="clearfix"></div>
+  <div class="clearfix" style="margin:1em;">&nbsp;</div>
 
   {{ partial "index-sonstiges.html" . }}
 </div>
-
 
 
 {{ $maps := split (partial "maps.html" . | chomp) "\n" }}
