@@ -1,8 +1,18 @@
 {{ partial "head.html" . }}
 {{ partial "header.html" . }}
 <div class="container">
-  <h1 class="display-4">Die Strecken am 12. Juni 2016</h1>
-  <div id="overviewmap" class="cmmap"></div>
+  <h1 class="display-4">Die Strecken am 12. Juni 2016 und live Tracking auf <a href="http://criticalmaps.net/map#11/48.8094/9.1949">CriticalMaps</a></h1>
+  <!-- Columns are always 50% wide, on mobile and desktop -->
+  <div class="row">
+    <div class="col-xs-6">
+     <div id="overviewmap" class="cmmap"></div>
+    </div>
+    <div class="col-xs-6">
+      <iframe width="50%" height="250" src="http://criticalmaps.net/map-embed#11/48.8094/9.1949" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  
   <div class="clearfix"></div>
 
   {{ partial "index-routes.html" . }}
